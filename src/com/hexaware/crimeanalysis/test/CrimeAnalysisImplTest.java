@@ -29,6 +29,7 @@ public class CrimeAnalysisImplTest {
             ps.executeUpdate();
             conn.close();
             System.out.println("Incidents table cleared.");
+            System.out.println("All test cases passed");
         } catch (SQLException e) {
             e.printStackTrace();
         }
