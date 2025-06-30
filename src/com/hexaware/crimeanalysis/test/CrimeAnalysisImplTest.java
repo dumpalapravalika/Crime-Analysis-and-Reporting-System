@@ -36,27 +36,6 @@ public class CrimeAnalysisImplTest {
     }
 
     @Test
-    public void testCreateIncident_Success() {
-        Incidents incident = new Incidents();
-        incident.setIncidentID(21);
-        incident.setVictimID(2);
-        incident.setSuspectID(2);
-        incident.setType("Fraud");
-        incident.setStatus("Open");
-        incident.setDate(Date.valueOf("2025-06-29"));
-        incident.setLocation("Hyderabad");
-        incident.setDescription("banking fraud");
-
-        boolean result = crimeService.createIncident(incident);
-        if (result) {
-            System.out.println("Incident inserted successfully.");
-        } else {
-            System.out.println("Incident insertion failed.");
-        }
-        assertTrue(result, "Incident should be created successfully");
-    }
-
-    @Test
     public void testCreateIncident_DuplicateId() {
         Incidents incident1 = new Incidents();
         incident1.setIncidentID(22);

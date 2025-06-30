@@ -62,7 +62,7 @@ public class CrimeAnalysisImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public Collection<Incidents> getIncidentsInDateRange(String startDate, String endDate) {
+    public List<Incidents> getIncidentsInDateRange(String startDate, String endDate) {
         List<Incidents> incidents = new ArrayList<>();
         String query = "SELECT * FROM Incidents WHERE date BETWEEN ? AND ?";
 
@@ -94,7 +94,7 @@ public class CrimeAnalysisImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public Collection<Incidents> searchIncidents(String criteria) {
+    public List<Incidents> searchIncidents(String criteria) {
         List<Incidents> result = new ArrayList<>();
         String query = "SELECT * FROM Incidents WHERE type LIKE ?";
 
@@ -143,7 +143,7 @@ public class CrimeAnalysisImpl implements ICrimeAnalysisService {
                 report.setReportDetails(rs.getString("reportDetails"));
                 report.setStatus(rs.getString("status"));
             } else {
-                System.out.println("No report found for the given incident ID.");
+                System.out.println("Error: No report found for the given incident ID.");
             }
 
         } catch (SQLException e) {
@@ -154,7 +154,7 @@ public class CrimeAnalysisImpl implements ICrimeAnalysisService {
     }
 
     @Override
-    public Cases createCase(int caseId, String caseDescription, Collection<Incidents> incidents) {
+    public Cases createCase(int caseId, String caseDescription, List<Incidents> incidents) {
         String insertQuery = "INSERT INTO cases (caseId, caseDescription) VALUES (?, ?)";
 
         try (Connection conn = DBConnection.getConnection();
